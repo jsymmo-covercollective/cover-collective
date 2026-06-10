@@ -1203,7 +1203,7 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
     <span class="land-footer-logo">Cover Collective</span>
     <span>Your personal book tracker</span>
     <div style="display:flex;align-items:center;gap:16px;">
-      <a href="mailto:spinesapp@gmail.com" style="font-size:13px;color:var(--ink3);text-decoration:none;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink3)'">Contact</a>
+      <a href="mailto:covercollectiveapp@gmail.com" style="font-size:13px;color:var(--ink3);text-decoration:none;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink3)'">Contact</a>
       <button class="btn btn-ghost" style="font-size:13px;" onclick="showAuthFromLanding('signin')">Sign in</button>
     </div>
   </footer>
@@ -1235,6 +1235,9 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
       <div class="auth-field">
         <label class="form-label">Password</label>
         <input class="form-input" id="auth-password" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')handleAuth()">
+        <div id="password-hint" style="display:none;font-size:12px;color:var(--ink3);margin-top:6px;line-height:1.5;">
+          8+ characters · at least one uppercase letter · at least one special character (e.g. ! @ # $)
+        </div>
       </div>
       <div class="auth-footer">
         <button class="btn btn-primary btn-full" id="auth-btn" onclick="handleAuth()">Sign in</button>
@@ -1466,7 +1469,7 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
 
           <div class="form-section">
             <label class="form-label">Status</label>
-            <select class="form-select" id="b-fate" onchange="toggleLoanedSection('b')">
+            <select class="form-select" id="b-fate" onchange="toggleLoanedSection('b');toggleDateField('b')">
               <option value="reading">Currently reading</option>
               <option value="toread">To read — bought but not started</option>
               <option value="kept">Kept — still on my shelf</option>
@@ -1533,7 +1536,7 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
       </div>
       <div class="form-section">
         <label class="form-label">Status</label>
-        <select class="form-select" id="edit-fate" onchange="toggleLoanedSection('edit')">
+        <select class="form-select" id="edit-fate" onchange="toggleLoanedSection('edit');toggleDateField('edit')">
           <option value="reading">Currently reading</option>
           <option value="toread">To read — bought but not started</option>
           <option value="kept">Kept — still on my shelf</option>
@@ -1677,6 +1680,7 @@ function switchTab(tab) {
   document.getElementById('tab-signup').classList.toggle('active', tab === 'signup');
   document.getElementById('auth-btn').textContent = tab === 'signin' ? 'Sign in' : 'Create account';
   document.getElementById('forgot-wrap').style.display = tab === 'signin' ? '' : 'none';
+  document.getElementById('password-hint').style.display = tab === 'signup' ? '' : 'none';
   clearAuthMessages();
 }
 
@@ -2230,6 +2234,7 @@ function clearForm() {
   buildStars('b-rating', 0);
   document.getElementById('b-date').value = '';
   document.getElementById('b-fate').value = 'toread';
+  toggleDateField('b');
   document.getElementById('b-loaned-name').value = '';
   document.getElementById('b-loaned-email').value = '';
   document.getElementById('b-borrower-status').textContent = '';
@@ -2242,6 +2247,19 @@ function clearForm() {
   document.getElementById('lookup-btn').disabled = false;
   document.getElementById('title-search-results').innerHTML = '';
   switchLookupTab('isbn');
+}
+
+/* ── Date field gating ── */
+function toggleDateField(prefix) {
+  const fate = document.getElementById(prefix === 'b' ? 'b-fate' : 'edit-fate').value;
+  const dateId = prefix === 'b' ? 'b-date' : 'edit-date';
+  const dateEl = document.getElementById(dateId);
+  if (!dateEl) return;
+  const noDate = ['toread', 'reading'].includes(fate);
+  dateEl.disabled = noDate;
+  dateEl.style.opacity = noDate ? '0.4' : '1';
+  dateEl.style.cursor = noDate ? 'not-allowed' : '';
+  if (noDate) dateEl.value = '';
 }
 
 /* ── Lending ── */
@@ -2574,6 +2592,7 @@ function openEdit(id) {
     editStatusEl.textContent = '';
   }
   document.getElementById('edit-loaned-section').style.display = book.fate === 'loaner' ? 'block' : 'none';
+  toggleDateField('edit');
   document.getElementById('edit-modal').style.display = 'flex';
 }
 
@@ -3214,7 +3233,7 @@ function renderSettings() {
       </div>
       <div class="settings-row">
         <div><div class="settings-row-label">Contact</div></div>
-        <a href="mailto:spinesapp@gmail.com" class="settings-row-val" style="color:var(--accent);">spinesapp@gmail.com</a>
+        <a href="mailto:covercollectiveapp@gmail.com" class="settings-row-val" style="color:var(--accent);">covercollectiveapp@gmail.com</a>
       </div>
     </div>`;
 }
