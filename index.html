@@ -661,6 +661,7 @@ body.dark .book-row.reading-now { border-left-color: var(--reading); }
 .form-isbn-row { display: flex; gap: 10px; }
 .form-isbn-row .form-input { flex: 1; }
 
+.lang-btn.active { background: var(--ink) !important; color: var(--surface) !important; }
 .lookup-tabs { display: flex; gap: 0; margin-bottom: 10px; border: 1px solid var(--border2); border-radius: var(--r-sm); overflow: hidden; width: fit-content; }
 .lookup-tab {
   background: none; border: none; padding: 6px 14px; font-family: var(--sans);
@@ -1073,16 +1074,20 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
     <div class="land-nav-logo">Cover Collective</div>
     <div class="land-nav-actions">
       <button class="dark-toggle-btn" onclick="toggleDark()" title="Toggle dark mode" style="background:none;border:none;cursor:pointer;font-size:18px;padding:4px;line-height:1;">🌙</button>
-      <button class="btn btn-ghost" onclick="showAuthFromLanding('signin')">Sign in</button>
-      <button class="btn btn-primary" onclick="showAuthFromLanding('signup')">Get started free</button>
+      <div class="lang-toggle" style="display:flex;gap:2px;background:var(--bg);border:1px solid var(--border2);border-radius:6px;padding:2px;">
+        <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')" style="background:none;border:none;font-family:var(--sans);font-size:12px;font-weight:500;padding:4px 12px;border-radius:4px;cursor:pointer;color:var(--ink2);">English</button>
+        <button class="lang-btn" data-lang="mi" onclick="setLanguage('mi')" style="background:none;border:none;font-family:var(--sans);font-size:12px;font-weight:500;padding:4px 12px;border-radius:4px;cursor:pointer;color:var(--ink2);">Te Reo Māori</button>
+      </div>
+      <button class="btn btn-ghost" onclick="showAuthFromLanding('signin')" data-i18n="landing.nav_signin">Sign in</button>
+      <button class="btn btn-primary" onclick="showAuthFromLanding('signup')" data-i18n="landing.nav_signup">Get started free</button>
     </div>
   </nav>
 
   <!-- Hero -->
   <section class="land-hero">
-    <div class="land-eyebrow">Your personal book tracker</div>
-    <h1 class="land-hero-title">Every book you've ever read,<br><em>beautifully organised</em></h1>
-    <p class="land-hero-sub">Track what you've read, what you've lent, and what's waiting on your shelf — all in one simple place.</p>
+    <div class="land-eyebrow" data-i18n="landing.eyebrow">Your personal book tracker</div>
+    <h1 class="land-hero-title" data-i18n="landing.hero_title">Every book you've ever read,<br><em>beautifully organised</em></h1>
+    <p class="land-hero-sub" data-i18n="landing.hero_sub">Track what you've read, what you've lent, and what's waiting on your shelf — all in one simple place.</p>
     <div class="land-hero-btns">
       <button class="btn btn-primary btn-lg" onclick="showAuthFromLanding('signup')">Get started free</button>
       <button class="btn btn-ghost btn-lg" onclick="showAuthFromLanding('signin')">Sign in</button>
@@ -1108,8 +1113,8 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
 
   <!-- Features -->
   <section class="land-features">
-    <h2 class="land-features-title">Everything your bookshelf needs</h2>
-    <p class="land-features-sub">Simple enough to use every day. Detailed enough to actually be useful.</p>
+    <h2 class="land-features-title" data-i18n="landing.features_title">Everything your bookshelf needs</h2>
+    <p class="land-features-sub" data-i18n="landing.features_sub">Simple enough to use every day. Detailed enough to actually be useful.</p>
     <div class="land-feature-grid">
 
       <div class="land-feature-card">
@@ -1119,8 +1124,8 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
             <circle cx="15.5" cy="15.5" r="2.5"/><path d="M17.5 17.5l1.5 1.5"/>
           </svg>
         </div>
-        <div class="land-feature-title">ISBN lookup</div>
-        <div class="land-feature-desc">Search by title or enter an ISBN and the details fill in automatically. You can also scan barcodes directly with your phone camera.</div>
+        <div class="land-feature-title" data-i18n="landing.feature_isbn_title">ISBN lookup</div>
+        <div class="land-feature-desc" data-i18n="landing.feature_isbn_desc">Search by title or enter an ISBN and the details fill in automatically. You can also scan barcodes directly with your phone camera.</div>
       </div>
 
       <div class="land-feature-card">
@@ -1129,8 +1134,8 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
             <path d="M4 4h4v4H4zM12 4h4v4h-4zM4 12h4v4H4zM12 12h4v4h-4z"/>
           </svg>
         </div>
-        <div class="land-feature-title">Status tracking</div>
-        <div class="land-feature-desc">Kept, Loaned out, Given away, To read, or Read &amp; returned — every book has a story, Cover Collective tracks it.</div>
+        <div class="land-feature-title" data-i18n="landing.feature_status_title">Status tracking</div>
+        <div class="land-feature-desc" data-i18n="landing.feature_status_desc">Kept, Loaned out, Given away, To read, or Read &amp; returned — every book has a story, Cover Collective tracks it.</div>
       </div>
 
       <div class="land-feature-card">
@@ -1140,8 +1145,8 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
             <path d="M11 8h5M14 5v6"/>
           </svg>
         </div>
-        <div class="land-feature-title">Lend books to friends</div>
-        <div class="land-feature-desc">Loan a book to another Cover Collective user. It appears on their shelf as borrowed and returns to yours when they're done.</div>
+        <div class="land-feature-title" data-i18n="landing.feature_lend_title">Lend books to friends</div>
+        <div class="land-feature-desc" data-i18n="landing.feature_lend_desc">Loan a book to another Cover Collective user. It appears on their shelf as borrowed and returns to yours when they're done.</div>
       </div>
 
       <div class="land-feature-card">
@@ -1150,8 +1155,8 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
             <path d="M3 17V7l7-4 7 4v10"/><path d="M8 17v-5h4v5"/>
           </svg>
         </div>
-        <div class="land-feature-title">Timeline &amp; yearly stats</div>
-        <div class="land-feature-desc">A chronological view of your reading life, with yearly breakdowns, bar charts and your top-rated picks.</div>
+        <div class="land-feature-title" data-i18n="landing.feature_timeline_title">Timeline &amp; yearly stats</div>
+        <div class="land-feature-desc" data-i18n="landing.feature_timeline_desc">A chronological view of your reading life, with yearly breakdowns, bar charts and your top-rated picks.</div>
       </div>
 
       <div class="land-feature-card">
@@ -1161,8 +1166,8 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
             <path d="M2 8h16M6 4v4M14 4v4"/>
           </svg>
         </div>
-        <div class="land-feature-title">Series, genres &amp; ratings</div>
-        <div class="land-feature-desc">Tag books with genres, track series order, leave notes, and give star ratings. Filter and search your whole collection.</div>
+        <div class="land-feature-title" data-i18n="landing.feature_series_title">Series, genres &amp; ratings</div>
+        <div class="land-feature-desc" data-i18n="landing.feature_series_desc">Tag books with genres, track series order, leave notes, and give star ratings. Filter and search your whole collection.</div>
       </div>
 
       <div class="land-feature-card">
@@ -1172,8 +1177,8 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
             <path d="M2 10h4M14 10h4M10 2v4M10 14v4"/>
           </svg>
         </div>
-        <div class="land-feature-title">Works everywhere, offline too</div>
-        <div class="land-feature-desc">Install Cover Collective as an app on any device. Your shelf syncs across all screens and works even without a connection.</div>
+        <div class="land-feature-title" data-i18n="landing.feature_offline_title">Works everywhere, offline too</div>
+        <div class="land-feature-desc" data-i18n="landing.feature_offline_desc">Install Cover Collective as an app on any device. Your shelf syncs across all screens and works even without a connection.</div>
       </div>
 
     </div>
@@ -1181,29 +1186,29 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
 
   <!-- Pricing -->
   <section class="land-pricing">
-    <h2 class="land-pricing-title">Completely free</h2>
-    <p class="land-pricing-sub">No limits, no subscription, no catch. Every feature is included.</p>
+    <h2 class="land-pricing-title" data-i18n="landing.pricing_title">Completely free</h2>
+    <p class="land-pricing-sub" data-i18n="landing.pricing_sub">No limits, no subscription, no catch. Every feature is included.</p>
     <div style="display:flex;justify-content:center;margin-top:8px;">
-      <button class="btn btn-primary btn-lg" onclick="showAuthFromLanding('signup')">Get started free</button>
+      <button class="btn btn-primary btn-lg" onclick="showAuthFromLanding('signup')" data-i18n="landing.nav_signup">Get started free</button>
     </div>
   </section>
 
   <!-- Bottom CTA -->
   <section class="land-cta-strip">
-    <div class="land-cta-title">Start tracking your books today</div>
-    <div class="land-cta-sub">Free to sign up. Every feature included, no subscription needed.</div>
+    <div class="land-cta-title" data-i18n="landing.cta_title">Start tracking your books today</div>
+    <div class="land-cta-sub" data-i18n="landing.cta_sub">Free to sign up. Every feature included, no subscription needed.</div>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <button class="btn btn-lg btn-light" onclick="showAuthFromLanding('signup')">Get started free</button>
-      <button class="btn btn-lg btn-outline-light" onclick="showAuthFromLanding('signin')">Sign in</button>
+      <button class="btn btn-lg btn-light" onclick="showAuthFromLanding('signup')" data-i18n="landing.nav_signup">Get started free</button>
+      <button class="btn btn-lg btn-outline-light" onclick="showAuthFromLanding('signin')" data-i18n="landing.nav_signin">Sign in</button>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="land-footer">
     <span class="land-footer-logo">Cover Collective</span>
-    <span>Your personal book tracker</span>
+    <span data-i18n="landing.footer_sub">Your personal book tracker</span>
     <div style="display:flex;align-items:center;gap:16px;">
-      <a href="mailto:covercollectiveapp@gmail.com" style="font-size:13px;color:var(--ink3);text-decoration:none;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink3)'">Contact</a>
+      <a href="mailto:covercollectiveapp@gmail.com" style="font-size:13px;color:var(--ink3);text-decoration:none;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--ink3)'" data-i18n="landing.footer_contact">Contact</a>
       <button class="btn btn-ghost" style="font-size:13px;" onclick="showAuthFromLanding('signin')">Sign in</button>
     </div>
   </footer>
@@ -1223,19 +1228,19 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
     </div>
     <div class="auth-card">
       <div class="auth-tabs">
-        <button class="auth-tab active" id="tab-signin" onclick="switchTab('signin')">Sign in</button>
-        <button class="auth-tab" id="tab-signup" onclick="switchTab('signup')">Create account</button>
+        <button class="auth-tab active" id="tab-signin" onclick="switchTab('signin')" data-i18n="auth.tab_signin">Sign in</button>
+        <button class="auth-tab" id="tab-signup" onclick="switchTab('signup')" data-i18n="auth.tab_signup">Create account</button>
       </div>
       <div class="auth-error" id="auth-error"></div>
       <div class="auth-success" id="auth-success"></div>
       <div class="auth-field">
-        <label class="form-label">Email</label>
+        <label class="form-label" data-i18n="auth.label_email">Email</label>
         <input class="form-input" id="auth-email" type="email" placeholder="you@example.com" onkeydown="if(event.key==='Enter')handleAuth()">
       </div>
       <div class="auth-field">
-        <label class="form-label">Password</label>
+        <label class="form-label" data-i18n="auth.label_password">Password</label>
         <input class="form-input" id="auth-password" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')handleAuth()">
-        <div id="password-hint" style="display:none;font-size:12px;color:var(--ink3);margin-top:6px;line-height:1.5;">
+        <div id="password-hint" style="display:none;font-size:12px;color:var(--ink3);margin-top:6px;line-height:1.5;" data-i18n="auth.password_hint">
           8+ characters · at least one uppercase letter · at least one special character (e.g. ! @ # $)
         </div>
       </div>
@@ -1256,7 +1261,7 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
     <div class="logo" style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div>
         <div class="logo-mark">Cover Collective</div>
-        <div class="logo-sub">Your personal book tracker</div>
+        <div class="logo-sub" data-i18n="nav.app_subtitle">Your personal book tracker</div>
       </div>
       <button onclick="toggleDark()" title="Toggle dark mode" style="background:none;border:none;cursor:pointer;font-size:18px;padding:2px;margin-top:2px;line-height:1;" id="dark-btn" class="dark-toggle-btn">🌙</button>
     </div>
@@ -1264,23 +1269,23 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
     <nav>
       <button class="nav-item active" id="nav-shelf" data-view="shelf" onclick="showView('shelf')">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="14" x2="15" y2="14"/><rect x="1.5" y="5" width="3" height="9" rx="0.5"/><rect x="6" y="3" width="3" height="11" rx="0.5"/><rect x="10.5" y="6" width="3" height="8" rx="0.5"/></svg>
-        Shelf
+        <span data-i18n="nav.shelf">Shelf</span>
       </button>
       <button class="nav-item" id="nav-timeline" data-view="timeline" onclick="showView('timeline')">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="4" cy="4" r="1.5"/><line x1="6.5" y1="4" x2="15" y2="4"/><circle cx="4" cy="8" r="1.5"/><line x1="6.5" y1="8" x2="15" y2="8"/><circle cx="4" cy="12" r="1.5"/><line x1="6.5" y1="12" x2="15" y2="12"/></svg>
-        Timeline
+        <span data-i18n="nav.timeline">Timeline</span>
       </button>
       <button class="nav-item" id="nav-stats" data-view="stats" onclick="showView('stats')">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="8" width="3" height="7"/><rect x="6" y="4" width="3" height="11"/><rect x="11" y="1" width="3" height="14"/></svg>
-        Stats
+        <span data-i18n="nav.stats">Stats</span>
       </button>
       <button class="nav-item" id="nav-add" data-view="add" onclick="showView('add')">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
-        Log a book
+        <span data-i18n="nav.log_a_book">Log a book</span>
       </button>
       <button class="nav-item" id="nav-settings" data-view="settings" onclick="showView('settings')">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M2.93 2.93l1.41 1.41M11.66 11.66l1.41 1.41M2.93 13.07l1.41-1.41M11.66 4.34l1.41-1.41"/></svg>
-        Settings
+        <span data-i18n="nav.settings">Settings</span>
       </button>
     </nav>
 
@@ -1300,13 +1305,13 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
     <div id="view-shelf">
       <div class="page-header">
         <div>
-          <div class="page-title">My shelf</div>
-          <div class="page-subtitle" id="shelf-sub">Loading…</div>
+          <div class="page-title" data-i18n="shelf.page_title">My shelf</div>
+          <div class="page-subtitle" id="shelf-sub" data-i18n="shelf.loading">Loading…</div>
         </div>
         <div class="header-actions">
           <button class="btn btn-primary btn-sm" onclick="showView('add')">
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6.5" y1="1" x2="6.5" y2="12"/><line x1="1" y1="6.5" x2="12" y2="6.5"/></svg>
-            Log a book
+            <span data-i18n="nav.log_a_book">Log a book</span>
           </button>
         </div>
       </div>
@@ -1349,8 +1354,8 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
     <div id="view-timeline" style="display:none;">
       <div class="page-header">
         <div>
-          <div class="page-title">Reading timeline</div>
-          <div class="page-subtitle" id="timeline-sub">Your reading history</div>
+          <div class="page-title" data-i18n="timeline.page_title">Reading timeline</div>
+          <div class="page-subtitle" id="timeline-sub" data-i18n="timeline.subtitle">Your reading history</div>
         </div>
       </div>
       <div class="timeline-wrap" id="timeline-list"></div>
@@ -1360,8 +1365,8 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
     <div id="view-stats" style="display:none;">
       <div class="page-header">
         <div>
-          <div class="page-title">Stats</div>
-          <div class="page-subtitle" id="stats-sub">Your reading at a glance</div>
+          <div class="page-title" data-i18n="stats.page_title">Stats</div>
+          <div class="page-subtitle" id="stats-sub" data-i18n="stats.subtitle">Your reading at a glance</div>
         </div>
       </div>
       <div class="summary-wrap" id="summary-wrap"></div>
@@ -1382,8 +1387,8 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
     <div id="view-add" style="display:none;">
       <div class="page-header">
         <div>
-          <div class="page-title">Log a book</div>
-          <div class="page-subtitle">Add a book you've read to your shelf</div>
+          <div class="page-title" data-i18n="add.page_title">Log a book</div>
+          <div class="page-subtitle" data-i18n="add.page_sub">Add a book you've read to your shelf</div>
         </div>
       </div>
       <div class="form-wrap">
@@ -1665,6 +1670,245 @@ let addLoanedUserId = null;
 let editLoanedUserId = null;
 let currentTab = 'signin';
 
+/* ── Translations ── */
+const TRANSLATIONS = {
+  en: {},
+  mi: {
+    // Landing
+    'landing.nav_signin': 'Takiuru',
+    'landing.nav_signup': 'Tīmata ki te kore utu',
+    'landing.eyebrow': 'Tāu ake kaiwhakahaere pukapuka',
+    'landing.hero_title': 'Ia pukapuka kua pānuihia e koe, i whakarite pai ai',
+    'landing.hero_sub': 'Aroturukihia ngā mea kua pānuitia e koe, ngā mea kua whiwhiwhi, me ngā mea e tatari ana i runga i tō taumahi – ngā mea katoa i runga i tētahi wāhi māmā kotahi.',
+    'landing.features_title': 'Ngā mea katoa e hiahiatia ana e tō pouaka pukapuka',
+    'landing.features_sub': 'Māmā te whakamahi ia rā. Tāmiro te taipitopito kia whai hua tūturu ai.',
+    'landing.feature_isbn_title': 'Rapu ISBN',
+    'landing.feature_isbn_desc': 'Tirohia mā te taitara, mā te tāuru rānei i tētahi ISBN ka whakakiia aunoa ngā taipitopito. Ka taea hoki te tiki ngā paerewa kirikiri mā tō kāmera waea pūkoro.',
+    'landing.feature_status_title': 'Aroturuki āhua',
+    'landing.feature_status_desc': 'Tiakina, Nāna te tāke, I hoatu atu, Hei pānui, rānei Kua pānui ka whakahokia — he kōrero tā ia pukapuka, e whai ana a Cover Collective i taua kōrero.',
+    'landing.feature_lend_title': 'Whakangāwari pukapuka ki ngā hoa',
+    'landing.feature_lend_desc': 'Whakawhiwhia he pukapuka ki tētahi atu kaiwhakamahi o Cover Collective. Ka puta ki tō rātou tuanui hei whakariteia, ā, ka hoki mai ki tō tuanui ina kua mutu rātou.',
+    'landing.feature_timeline_title': 'Rārangi wā me ngā tatauranga ā-tau',
+    'landing.feature_timeline_desc': 'He tirohanga pāpori o tō oranga pānui, me ngā wehenga ā-tau, ngā pāti pae me ō whiriwhiringa tino pai.',
+    'landing.feature_series_title': 'Ngā raupapa, ngā momo me ngā whakatauranga',
+    'landing.feature_series_desc': 'Tāuru pukapuka ki ngā momo, whai i te raupapa o ngā raupapa, waiho tuhinga, me te hoatu i ngā whakatauranga whetū. Tāpirihia me te rapu i tō kohinga katoa.',
+    'landing.feature_offline_title': 'Ka mahi i ngā wāhi katoa, tae atu hoki ki te kāore i te ipurangi',
+    'landing.feature_offline_desc': 'Whakauruhia te Cover Collective hei taupānga ki runga i tētahi pūrere. Ka rite tō tūru rongoa i waenga i ngā mata katoa ā, ka mahi anō ahakoa kāore he hono ipurangi.',
+    'landing.pricing_title': 'Katoa kore utu',
+    'landing.pricing_sub': 'Kāore he here, kāore he rēhita, kāore he pihinga. Kei roto ngā āhuatanga katoa.',
+    'landing.cta_title': 'Tīmatahia te whai i ō pukapuka i tēnei rā',
+    'landing.cta_sub': 'Ka taea te utu ki te hainatanga. Kua whakaurua ngā āhuatanga katoa. Kāore he tāpui e hiahiatia ana.',
+    'landing.footer_sub': 'Tāu ake kaiwhakahaere pukapuka',
+    'landing.footer_contact': 'Whakapā',
+    // Auth
+    'auth.tab_signin': 'Takiuru',
+    'auth.tab_signup': 'Hanga pūkete',
+    'auth.label_email': 'Īmēra',
+    'auth.label_password': 'Kupuhipa',
+    'auth.btn_signin': 'Takiuru',
+    'auth.btn_signup': 'Hanga pūkete',
+    'auth.forgot_password': 'Kua wareware i te kupuhipa?',
+    'auth.back_to_home': '← Hoki ki te kāinga',
+    'auth.signup_success': 'Kua waihangahia te pūkete! Tirohia tō īmēra ki te whakau i tō wāhitau, katahi ka takiuru.',
+    'auth.error_fill_in': 'Tēnā koa tāuru tō īmēra me te kupuhipa.',
+    'auth.error_password_length': 'Me kia 8 ngā pūāhua te roa o te kupuhipa.',
+    'auth.error_password_upper': 'Me whai pūāhua nui kotahi te kupuhipa.',
+    'auth.error_password_special': 'Me whai pūāhua motuhake kotahi te kupuhipa (hei tauira ! @ # $).',
+    'auth.reset_sent': 'Kua tukuna te īmēra whakahou kupuhipa — tirohia tō pouaka mēra.',
+    'auth.subtitle': 'Tāu ake kaiwhakahaere pukapuka',
+    'auth.password_hint': '8+ pūāhua · pūāhua nui kotahi · pūāhua motuhake kotahi (hei tauira ! @ # $)',
+    // Navigation
+    'nav.shelf': 'Tepu whakatakoto',
+    'nav.timeline': 'Rārangi Wā',
+    'nav.stats': 'Tātari',
+    'nav.log_a_book': 'Tārua he pukapuka',
+    'nav.settings': 'Ngā Tautuhinga',
+    'nav.sign_out': 'Taki atu',
+    'nav.export_csv': 'Kaweake tuanui hei CSV',
+    'nav.help_feedback': 'He āwhina, he urupare rānei?',
+    'nav.app_subtitle': 'Tāu ake kaiwhakahaere pukapuka',
+    // Statuses
+    'status.currently_reading': 'E pānui ana i tēnei wā',
+    'status.to_read': 'Hei pānui',
+    'status.kept': 'I pupuritia',
+    'status.loaned_out': 'Tukutua ki waho',
+    'status.given_away': 'I hoatu',
+    'status.read_returned': 'Verohia ā kua whakahokia',
+    'status.reading_label': 'Te pānui',
+    'status.loaned_label': 'Nama',
+    'status.returned_label': 'I hoki mai',
+    // Shelf
+    'shelf.page_title': 'Tōku whakaatu',
+    'shelf.loading': 'Kei te uta…',
+    'shelf.search_placeholder': 'Rapua mā te taitara, mā te kaituhi rānei…',
+    'shelf.filter_all': 'Ngā pukapuka katoa',
+    'shelf.filter_all_genres': 'Ngā momo katoa',
+    'shelf.sort_recent': 'Tuatahi ngā hou',
+    'shelf.sort_oldest': 'Tērā tawhito tuatahi',
+    'shelf.sort_title': 'Taitara A–Z',
+    'shelf.sort_author': 'Kaituhi A–Z',
+    'shelf.empty_title': 'He kau tō tūrua',
+    'shelf.empty_sub': 'Tāpiri i tō pukapuka tuatahi hei tīmata — rapu mā te taitara, keri i te waehere pae, ranei whakauruhia he ISBN.',
+    'shelf.empty_cta': 'Tuhia tō pukapuka tuatahi',
+    'shelf.no_results_title': 'Kāore he pukapuka e ū ana',
+    'shelf.no_results_sub': 'Whakamātau rapu rerekē, rīhia rānei',
+    'shelf.lent_to': 'I nama ki:',
+    'shelf.borrowed_section': 'Nā ētahi atu i nama',
+    'shelf.log_a_book': 'Tārua he pukapuka',
+    // Add form
+    'add.page_title': 'Tuhia he pukapuka',
+    'add.page_sub': 'Tāpiri he pukapuka kua pānuihia ki tō tūāhu',
+    'add.lookup_tab_isbn': 'ISBN / Waehanga Paerewa',
+    'add.lookup_tab_title': 'Tirohia mā te taitara',
+    'add.isbn_placeholder': 'hei tauira 0-88677-482-9, 9780525559474',
+    'add.lookup_btn': 'Tiro ki runga',
+    'add.title_search_placeholder': 'hei tauira Harry Potter and the Philosopher\'s Stone',
+    'add.search_btn': 'Rapu',
+    'add.cover_url_placeholder': 'Rānei whakapiri i te URL ahua uhi…',
+    'add.lookup_default': 'Rapua mā te taitara, mā te whakauru rānei i tētahi ISBN hei whakakī aunoa i ngā taipitopito.',
+    'add.lookup_loading': 'E titiro ki runga…',
+    'add.lookup_found_cover': '✓ Kua kitea te pukapuka me te uhi.',
+    'add.lookup_found_no_cover': '✓ Kua kitea te pukapuka — kāore he whakaahua uhi e wātea ana.',
+    'add.lookup_not_found': 'Kāore i kitea i roto i tētahi pātengi raraunga — tēnā whakakīa ā-ringa.',
+    'add.label_title': 'Taitara',
+    'add.label_author': 'Kaituhi',
+    'add.label_year': 'Tau i whakapuakina',
+    'add.label_pages': 'Ngā whārangi',
+    'add.label_date_finished': 'Te rā i oti ai',
+    'add.label_date_hint': '(kia waiho wātea mēnā kāore i te pānuihia)',
+    'add.label_status': 'Tūnga',
+    'add.label_series': 'Rārangi',
+    'add.label_series_optional': '(kōwhiringa)',
+    'add.label_series_number': 'Pukapuka # i te raupapa',
+    'add.label_lent_to': 'Tāpaetia ki',
+    'add.label_lent_name': 'Tō rātou ingoa',
+    'add.label_notes': 'Tuhipoka',
+    'add.label_rating': 'Whakatauranga',
+    'add.label_genres': 'Ngā momo whakatangi',
+    'add.genre_custom_placeholder': 'Tāpiri momo ritenga…',
+    'add.genre_add_btn': 'Tāpiri',
+    'add.btn_save': 'Tiakina te pukapuka',
+    'add.btn_clear': 'Mukua te pepa',
+    'add.saved_flash': 'Kua whakaorangia!',
+    'add.borrower_found': '✓ I honoa ki te pūkete Cover Collective',
+    'add.borrower_not_found_email': 'Kāore he pūkete Cover Collective i kitea — ingoa anake i tiakina',
+    'add.borrower_not_found_username': 'Kāore te ingoa kaiwhakamahi i kitea — tirohia te wetereo, te whakamahi rānei i tā rātou īmēra',
+    'add.borrower_looking_up': 'E titiro ki runga…',
+    // Edit modal
+    'edit.label_title': 'Taitara',
+    'edit.label_author': 'Kaituhi',
+    'edit.label_cover': 'URL whakaahua pānui',
+    'edit.label_cover_optional': '(kōwhiringa)',
+    'edit.label_status': 'Tūnga',
+    'edit.label_pages': 'Ngā whārangi',
+    'edit.label_date': 'Te rā i oti ai',
+    'edit.label_series': 'Rārangi',
+    'edit.label_series_number': 'Pukapuka # i te raupapa',
+    'edit.label_notes': 'Tuhipoka',
+    'edit.label_rating': 'Whakatauranga',
+    'edit.label_genres': 'Ngā momo whakatangi',
+    'edit.btn_save': 'Tiakina ngā huringa',
+    'edit.btn_cancel': 'Whakakorea',
+    // Sidebar stats
+    'sidebar.stat_reading': 'Te pānui',
+    'sidebar.stat_read': 'Pānui',
+    'sidebar.stat_kept': 'I pupuritia',
+    'sidebar.stat_loaned': 'Nama',
+    'sidebar.stat_given': 'I hoatu',
+    'sidebar.stat_to_read': 'Hei pānui',
+    'sidebar.stat_returned': 'Verohia ā kua whakahokia',
+    'sidebar.goal_label': 'whāinga pānui',
+    'sidebar.goal_edit': 'whakatika',
+    // Username modal
+    'username.title': 'Tīpakohia he ingoa kaiwhakamahi',
+    'username.sub': 'Ka āhei tō ingoa kaiwhakamahi i ngā hoa ki te rapu i a koe ina tuku pātengi pukapuka — kāore e hiahiatia tō wāhitau īmēra.',
+    'username.placeholder': 'hei tauira pukapuka42',
+    'username.save_btn': 'Tiakina te ingoa kaiwhakamahi',
+    'username.later_btn': 'Ā muri ake',
+    'username.checking': 'Kei te tirotiro…',
+    'username.available': '✓ Wātea',
+    'username.taken': 'Kua tangohia taua ingoa kaiwhakamahi — whakamātauria tētahi atu.',
+    'username.invalid': '3–20 pūāhua. Ko ngā reta me ngā tau anake (ka pai ngā _).',
+    'username.current': 'Koinei tō ingoa kaiwhakamahi o nāianei.',
+    'username.saving': 'Te whakaora…',
+    'username.error': 'Kāore i taea te tiaki — whakamātau anō.',
+    // Stats
+    'stats.page_title': 'Tautuhinga',
+    'stats.subtitle': 'Tō pānui i tētahi tirohanga',
+    'stats.pages_read': 'Ngā whārangi kua pānuitia',
+    'stats.pages_read_sub': 'ngā whārangi puta noa i ngā pukapuka kua oti katoa',
+    'stats.chart_title': 'Ngā pukapuka kua pānuitia ia tau',
+    'stats.chart_empty': 'Kāore ano he pukapuka kua oti.',
+    'stats.glance_title': 'i tētahi tirohanga whānui',
+    'stats.top_rated_title': 'Teitei te tohu',
+    'stats.top_rated_empty': 'Whakatauritea ētahi pukapuka kia kite i ēnei i konei.',
+    'stats.goal_title': 'Whāinga pānui',
+    'stats.books_read': 'Ngā pukapuka kua pānuitia',
+    'stats.avg_rating': 'Whakatauranga ā-toharite',
+    'stats.years_reading': 'tau pānui',
+    'stats.genre_title': 'Ngā momo tino',
+    'stats.no_books_title': 'Kāore he pukapuka anō',
+    'stats.no_books_sub': 'Tāurua tō pukapuka tuatahi hei kite i ngā tatauranga i konei',
+    // Timeline
+    'timeline.page_title': 'Rārangi Wā Pānui',
+    'timeline.subtitle': 'Tō hītori pānui',
+    'timeline.empty': 'Tāurua tō pukapuka tuatahi hei tīmata i te rārangi wā',
+    'timeline.books_across': 'ngā pukapuka puta noa',
+    // General
+    'general.copy_btn': 'Tārua',
+    'general.copied': 'Kōpiahia!',
+    'general.confirm_delete': 'Tangohia tēnei pukapuka i tō taiapa?',
+    'general.error_saving': 'Hē i te tiaki:',
+    'general.title_required': 'Me whai taitara.',
+  }
+};
+
+let currentLang = localStorage.getItem('cc_lang') || 'en';
+
+function t(key, fallback) {
+  if (currentLang === 'en') return fallback !== undefined ? fallback : null;
+  return TRANSLATIONS.mi[key] || fallback || null;
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('cc_lang', lang);
+  applyTranslations();
+  refreshAll();
+  if (document.getElementById('view-shelf')?.style.display !== 'none') renderShelf();
+  if (document.getElementById('view-timeline')?.style.display !== 'none') renderTimeline();
+  if (document.getElementById('view-stats')?.style.display !== 'none') renderSummary();
+  if (document.getElementById('view-settings')?.style.display !== 'none') renderSettings();
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+}
+
+function applyTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    // Cache original English on first run
+    if (el.dataset.i18nEn === undefined) el.dataset.i18nEn = el.textContent;
+    const val = currentLang === 'en'
+      ? el.dataset.i18nEn
+      : (TRANSLATIONS.mi[el.dataset.i18n] || el.dataset.i18nEn);
+    if (val !== undefined) el.textContent = val;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    if (el.dataset.i18nEnPlaceholder === undefined) el.dataset.i18nEnPlaceholder = el.placeholder;
+    const val = currentLang === 'en'
+      ? el.dataset.i18nEnPlaceholder
+      : (TRANSLATIONS.mi[el.dataset.i18nPlaceholder] || el.dataset.i18nEnPlaceholder);
+    if (val) el.placeholder = val;
+  });
+}
+
+function fateLabel(f) {
+  if (f === 'reading')  return t('status.currently_reading') || 'Reading';
+  if (f === 'loaner')   return t('status.loaned_label')      || 'Loaned';
+  if (f === 'charity')  return t('status.given_away')        || 'Given away';
+  if (f === 'toread')   return t('status.to_read')           || 'To read';
+  if (f === 'returned') return t('status.read_returned')     || 'Read & returned';
+  return t('status.kept') || 'Kept';
+}
+
 /* ── Genre state ── */
 const GENRE_PRESETS = ['Fiction','Non-fiction','Fantasy','Sci-Fi','Mystery','Thriller','Romance','Horror','Historical','Biography','Memoir','Self-help','Science','History','Philosophy'];
 const genreState = { b: [], edit: [] };
@@ -1716,12 +1960,12 @@ async function handleAuth() {
   const email    = document.getElementById('auth-email').value.trim();
   const password = document.getElementById('auth-password').value;
   const btn      = document.getElementById('auth-btn');
-  if (!email || !password) { setAuthError('Please enter your email and password.'); return; }
+  if (!email || !password) { setAuthError(t('auth.error_fill_in') || 'Please enter your email and password.'); return; }
 
   if (currentTab === 'signup') {
-    if (password.length < 8) { setAuthError('Password must be at least 8 characters.'); return; }
-    if (!/[A-Z]/.test(password)) { setAuthError('Password must contain at least one uppercase letter.'); return; }
-    if (!/[^A-Za-z0-9]/.test(password)) { setAuthError('Password must contain at least one special character (e.g. ! @ # $).'); return; }
+    if (password.length < 8) { setAuthError(t('auth.error_password_length') || 'Password must be at least 8 characters.'); return; }
+    if (!/[A-Z]/.test(password)) { setAuthError(t('auth.error_password_upper') || 'Password must contain at least one uppercase letter.'); return; }
+    if (!/[^A-Za-z0-9]/.test(password)) { setAuthError(t('auth.error_password_special') || 'Password must contain at least one special character (e.g. ! @ # $).'); return; }
   }
 
   btn.disabled = true;
@@ -1825,7 +2069,7 @@ async function addBook() {
 }
 
 async function deleteBook(id) {
-  if (!confirm('Remove this book from your shelf?')) return;
+  if (!confirm(t('general.confirm_delete') || 'Remove this book from your shelf?')) return;
   const { error } = await db.from('books').delete().eq('id', id);
   if (error) { alert('Error removing book: ' + error.message); return; }
   books = books.filter(b => b.id !== id);
@@ -2300,10 +2544,10 @@ async function lookupBorrower(prefix) {
     }
     if (userId) {
       if (prefix === 'b') addLoanedUserId = userId; else editLoanedUserId = userId;
-      statusEl.textContent = '✓ Linked to a Cover Collective account';
+      statusEl.textContent = t('add.borrower_found') || '✓ Linked to a Cover Collective account';
       statusEl.style.color = 'var(--kept)';
     } else {
-      statusEl.textContent = isEmail ? 'No Cover Collective account found — name saved only' : 'Username not found — check the spelling or use their email';
+      statusEl.textContent = isEmail ? (t('add.borrower_not_found_email') || 'No Cover Collective account found — name saved only') : (t('add.borrower_not_found_username') || 'Username not found — check the spelling or use their email');
       statusEl.style.color = 'var(--ink3)';
     }
   }, 600);
@@ -2391,15 +2635,15 @@ function renderShelf() {
               <line x1="14" y1="26" x2="22" y2="26"/>
             </svg>
           </div>
-          <div class="empty-title">Your shelf is empty</div>
-          <div class="empty-sub" style="margin-bottom:20px;">Add your first book to get started — search by title, scan a barcode, or enter an ISBN.</div>
-          <button class="btn btn-primary" onclick="switchView('add')">Log your first book</button>
+          <div class="empty-title">${t('shelf.empty_title') || 'Your shelf is empty'}</div>
+          <div class="empty-sub" style="margin-bottom:20px;">${t('shelf.empty_sub') || 'Add your first book to get started — search by title, scan a barcode, or enter an ISBN.'}</div>
+          <button class="btn btn-primary" onclick="switchView('add')">${t('shelf.empty_cta') || 'Log your first book'}</button>
         </div>`;
     } else {
       el.innerHTML = `
         <div class="empty">
-          <div class="empty-title">No books match</div>
-          <div class="empty-sub">Try a different search or filter</div>
+          <div class="empty-title">${t('shelf.no_results_title') || 'No books match'}</div>
+          <div class="empty-sub">${t('shelf.no_results_sub') || 'Try a different search or filter'}</div>
         </div>`;
     }
     return;
@@ -2444,7 +2688,7 @@ function renderTimeline() {
   const el = document.getElementById('timeline-list');
 
   if (!sorted.length) {
-    el.innerHTML = `<div class="empty"><div class="empty-title">No books yet</div><div class="empty-sub">Log your first book to start the timeline</div></div>`;
+    el.innerHTML = `<div class="empty"><div class="empty-title">${t('stats.no_books_title')||'No books yet'}</div><div class="empty-sub">${t('timeline.empty')||'Log your first book to start the timeline'}</div></div>`;
     return;
   }
 
@@ -2476,7 +2720,7 @@ function renderTimeline() {
   el.innerHTML = html;
 
   const yrs = [...new Set(sorted.map(b => b.date.slice(0,4)))];
-  document.getElementById('timeline-sub').textContent = `${sorted.length} books across ${yrs.length} year${yrs.length!==1?'s':''}`;
+  document.getElementById('timeline-sub').textContent = `${sorted.length} ${t('timeline.books_across')||'books across'} ${yrs.length} ${yrs.length!==1?(t('timeline.year_plural')||'years'):(t('timeline.year_singular')||'year')}`;
 }
 
 /* ── Sidebar stats ── */
@@ -2490,13 +2734,13 @@ function renderSidebar() {
   const returned = books.filter(b=>b.fate==='returned').length;
   const total    = books.length || 1;
   const rows = [
-    { label:'Reading',        val:reading,  pct:Math.round(reading/total*100)  },
-    { label:'Read',           val:read,     pct:Math.round(read/total*100)     },
-    { label:'Kept',           val:kept,     pct:Math.round(kept/total*100)     },
-    { label:'Loaned',         val:loaned,   pct:Math.round(loaned/total*100)   },
-    { label:'Given away',     val:charity,  pct:Math.round(charity/total*100)  },
-    { label:'To read',        val:toread,   pct:Math.round(toread/total*100)   },
-    { label:'Read & returned',val:returned, pct:Math.round(returned/total*100) },
+    { label: t('sidebar.stat_reading')  || 'Reading',         val:reading,  pct:Math.round(reading/total*100)  },
+    { label: t('sidebar.stat_read')     || 'Read',            val:read,     pct:Math.round(read/total*100)     },
+    { label: t('sidebar.stat_kept')     || 'Kept',            val:kept,     pct:Math.round(kept/total*100)     },
+    { label: t('sidebar.stat_loaned')   || 'Loaned',          val:loaned,   pct:Math.round(loaned/total*100)   },
+    { label: t('sidebar.stat_given')    || 'Given away',      val:charity,  pct:Math.round(charity/total*100)  },
+    { label: t('sidebar.stat_to_read')  || 'To read',         val:toread,   pct:Math.round(toread/total*100)   },
+    { label: t('sidebar.stat_returned') || 'Read & returned', val:returned, pct:Math.round(returned/total*100) },
   ];
   document.getElementById('sidebar-stats').innerHTML = rows.map(r => `
     <div class="sidebar-stat">
@@ -2515,12 +2759,12 @@ function renderStatStrip() {
   const toread   = books.filter(b=>b.fate==='toread').length;
   const returned = books.filter(b=>b.fate==='returned').length;
   const tiles = [
-    { cls:'stat-total',    l:'Read',           n:read     },
-    { cls:'stat-kept',     l:'Kept',           n:kept     },
-    { cls:'stat-loan',     l:'Loaned',         n:loaned   },
-    { cls:'stat-char',     l:'Given away',     n:charity  },
-    { cls:'stat-toread',   l:'To read',        n:toread   },
-    { cls:'stat-returned', l:'Returned',       n:returned },
+    { cls:'stat-total',    l: t('sidebar.stat_read')     || 'Read',       n:read     },
+    { cls:'stat-kept',     l: t('sidebar.stat_kept')     || 'Kept',       n:kept     },
+    { cls:'stat-loan',     l: t('sidebar.stat_loaned')   || 'Loaned',     n:loaned   },
+    { cls:'stat-char',     l: t('sidebar.stat_given')    || 'Given away', n:charity  },
+    { cls:'stat-toread',   l: t('sidebar.stat_to_read')  || 'To read',    n:toread   },
+    { cls:'stat-returned', l: t('status.returned_label') || 'Returned',   n:returned },
   ];
   document.getElementById('stat-strip').innerHTML = tiles.map(t =>
     `<div class="stat-cell ${t.cls}">
@@ -2537,13 +2781,7 @@ function coverEl(b, w, h) {
   return `<img src="${url}" width="${w}" height="${h}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" alt="" onerror="this.parentElement.innerHTML='<div class=book-cover-ph><svg width=22 height=22 viewBox=0 0 22 22 fill=none stroke=currentColor stroke-width=1.2 stroke-linecap=round><rect x=3 y=2 width=14 height=18 rx=2/><line x1=6 y1=7 x2=13 y2=7/><line x1=6 y1=11 x2=13 y2=11/><line x1=6 y1=15 x2=10 y2=15/></svg></div>'">`;
 }
 
-function fateLabel(f) {
-  if (f === 'reading')  return 'Reading';
-  if (f === 'loaner')   return 'Loaned';
-  if (f === 'charity')  return 'Given away';
-  if (f === 'toread')   return 'To read';
-  if (f === 'returned') return 'Read & returned';
-  return 'Kept';
+function _fateLabel_removed(f) { // replaced by translated version above
 }
 
 function fmtDate(d) {
@@ -2668,6 +2906,12 @@ function toggleDark() {
   localStorage.setItem('spines_dark', dark ? '1' : '0');
   const icon = dark ? '☀️' : '🌙';
   document.querySelectorAll('.dark-toggle-btn').forEach(el => el.textContent = icon);
+}
+function initLang() {
+  currentLang = localStorage.getItem('cc_lang') || 'en';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === currentLang));
+  // Always run to cache English originals; applies translations if MI is active
+  applyTranslations();
 }
 function initDark() {
   const saved = localStorage.getItem('spines_dark');
@@ -3040,12 +3284,12 @@ function renderSummary() {
     <div class="stats-hero">
       <div class="stats-hero-card">
         <div class="stats-hero-n">${finishedBooks.length}</div>
-        <div class="stats-hero-l">Books read</div>
+        <div class="stats-hero-l">${t('stats.books_read')||'Books read'}</div>
       </div>
       ${totalPages > 0 ? `
       <div class="stats-hero-card">
         <div class="stats-hero-n">${totalPages.toLocaleString()}</div>
-        <div class="stats-hero-l">Pages read</div>
+        <div class="stats-hero-l">${t('stats.pages_read')||'Pages read'}</div>
       </div>` : `
       <div class="stats-hero-card">
         <div class="stats-hero-n">${yearsTracked}</div>
@@ -3060,7 +3304,7 @@ function renderSummary() {
     <!-- Books per year -->
     <div class="summary-section">
       <div class="stat-card">
-        <div class="stat-card-heading">Books read per year</div>
+        <div class="stat-card-heading">${t('stats.chart_title')||'Books read per year'}</div>
         ${years.length ? `<div class="stat-chart-wrap">${barsHTML}</div>` : '<div class="empty-sub">No finished books yet.</div>'}
       </div>
     </div>
@@ -3069,7 +3313,7 @@ function renderSummary() {
     ${topGenres.length ? `
     <div class="summary-section">
       <div class="stat-card">
-        <div class="stat-card-heading">Top genres</div>
+        <div class="stat-card-heading">${t('stats.genre_title')||'Top genres'}</div>
         ${topGenres.map(([g, n]) => `
           <div class="genre-bar-row">
             <div class="genre-bar-label">${esc(g)}</div>
@@ -3100,7 +3344,7 @@ function renderSummary() {
     <!-- Top rated -->
     <div class="summary-section">
       <div class="stat-card">
-        <div class="stat-card-heading">Top rated</div>
+        <div class="stat-card-heading">${t('stats.top_rated_title')||'Top rated'}</div>
         <div class="top-rated-grid">${topHTML}</div>
       </div>
     </div>
@@ -3108,7 +3352,7 @@ function renderSummary() {
     <!-- Reading goal -->
     <div class="summary-section">
       <div class="stat-card">
-        <div class="stat-card-heading">Reading goal</div>
+        <div class="stat-card-heading">${t('stats.goal_title')||'Reading goal'}</div>
         ${goal ? `
           <div class="stats-goal-row">
             <div>
@@ -3139,7 +3383,23 @@ function renderSettings() {
   const shareEnabled = profile?.share_enabled || false;
   const shareUrl = currentUser ? `${location.origin}/?share=${currentUser.id}` : '';
 
+  const activeLang = currentLang;
   el.innerHTML = `
+    <!-- Language -->
+    <div class="settings-section">
+      <div class="settings-heading">Language / Reo</div>
+      <div class="settings-row">
+        <div>
+          <div class="settings-row-label">App language</div>
+          <div class="settings-row-sub">Cover Collective supports English and Te Reo Māori</div>
+        </div>
+        <div style="display:flex;gap:2px;">
+          <button class="lang-btn ${activeLang==='en'?'active':''}" data-lang="en" onclick="setLanguage('en')" style="background:none;border:1px solid var(--border2);font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px 0 0 6px;cursor:pointer;color:var(--ink2);">English</button>
+          <button class="lang-btn ${activeLang==='mi'?'active':''}" data-lang="mi" onclick="setLanguage('mi')" style="background:none;border:1px solid var(--border2);border-left:none;font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:0 6px 6px 0;cursor:pointer;color:var(--ink2);">Te Reo Māori</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Account -->
     <div class="settings-section">
       <div class="settings-heading">Account</div>
@@ -3389,6 +3649,7 @@ function refreshAll() {
 /* ── Boot ── */
 async function init() {
   initDark();
+  initLang();
 
   const params = new URLSearchParams(location.search);
 
