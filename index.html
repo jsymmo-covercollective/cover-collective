@@ -214,7 +214,10 @@ body.dark .land-plan-pro { border-color: var(--accent); }
 .auth-back button:hover { color: var(--ink); }
 
 @media (max-width: 768px) {
-  .land-nav { padding: 0 20px; }
+  .land-nav { padding: 12px 20px; height: auto; flex-wrap: wrap; row-gap: 8px; }
+  .land-nav-actions { flex-wrap: wrap; row-gap: 8px; }
+  .land-nav-actions .lang-toggle { order: 10; width: 100%; justify-content: center; }
+  .land-nav-actions .lang-divider { display: none; }
   .land-hero { padding: 56px 20px 48px; }
   .land-hero-title { font-size: 34px; }
   .land-hero-sub { font-size: 15px; }
@@ -1078,7 +1081,7 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
         <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')" style="background:none;border:none;font-family:var(--sans);font-size:12px;font-weight:500;padding:4px 12px;border-radius:4px;cursor:pointer;color:var(--ink2);">English</button>
         <button class="lang-btn" data-lang="mi" onclick="setLanguage('mi')" style="background:none;border:none;font-family:var(--sans);font-size:12px;font-weight:500;padding:4px 12px;border-radius:4px;cursor:pointer;color:var(--ink2);">Te Reo Māori</button>
       </div>
-      <div style="width:1px;height:20px;background:var(--border2);margin:0 4px;"></div>
+      <div class="lang-divider" style="width:1px;height:20px;background:var(--border2);margin:0 4px;"></div>
       <button class="btn btn-ghost" onclick="showAuthFromLanding('signin')" data-i18n="landing.nav_signin">Sign in</button>
       <button class="btn btn-primary" onclick="showAuthFromLanding('signup')" data-i18n="landing.nav_signup">Get started free</button>
     </div>
@@ -1221,11 +1224,11 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
   <button class="dark-toggle-btn" onclick="toggleDark()" title="Toggle dark mode" style="position:fixed;top:16px;right:20px;background:none;border:none;cursor:pointer;font-size:20px;padding:4px;line-height:1;z-index:10;">🌙</button>
   <div class="auth-wrap">
     <div class="auth-back" id="auth-back">
-      <button onclick="showLanding()">← Back to home</button>
+      <button onclick="showLanding()" data-i18n="auth.back_to_home">← Back to home</button>
     </div>
     <div class="auth-logo">
       <div class="auth-logo-mark">Cover Collective</div>
-      <div class="auth-logo-sub">Your personal book tracker</div>
+      <div class="auth-logo-sub" data-i18n="auth.subtitle">Your personal book tracker</div>
     </div>
     <div class="auth-card">
       <div class="auth-tabs">
@@ -1637,23 +1640,23 @@ body.dark .settings-charity { background: #14532d22; color: var(--kept); }
   <nav class="mobile-nav">
     <button class="mob-nav-item active" data-view="shelf" onclick="showView('shelf')">
       <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="14" x2="15" y2="14"/><rect x="1.5" y="5" width="3" height="9" rx="0.5"/><rect x="6" y="3" width="3" height="11" rx="0.5"/><rect x="10.5" y="6" width="3" height="8" rx="0.5"/></svg>
-      Shelf
+      <span data-i18n="nav.shelf">Shelf</span>
     </button>
     <button class="mob-nav-item" data-view="timeline" onclick="showView('timeline')">
       <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="4" cy="4" r="1.5"/><line x1="6.5" y1="4" x2="15" y2="4"/><circle cx="4" cy="8" r="1.5"/><line x1="6.5" y1="8" x2="15" y2="8"/><circle cx="4" cy="12" r="1.5"/><line x1="6.5" y1="12" x2="15" y2="12"/></svg>
-      Timeline
+      <span data-i18n="nav.timeline">Timeline</span>
     </button>
     <button class="mob-nav-item" data-view="stats" onclick="showView('stats')">
       <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="8" width="3" height="7"/><rect x="6" y="4" width="3" height="11"/><rect x="11" y="1" width="3" height="14"/></svg>
-      Stats
+      <span data-i18n="nav.stats">Stats</span>
     </button>
     <button class="mob-nav-item" data-view="add" onclick="showView('add')">
       <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
-      Log
+      <span data-i18n="nav.log_a_book">Log a book</span>
     </button>
     <button class="mob-nav-item" data-view="settings" onclick="showView('settings')">
       <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M2.93 2.93l1.41 1.41M11.66 11.66l1.41 1.41M2.93 13.07l1.41-1.41M11.66 4.34l1.41-1.41"/></svg>
-      Settings
+      <span data-i18n="nav.settings">Settings</span>
     </button>
   </nav>
 
@@ -1820,6 +1823,8 @@ const TRANSLATIONS = {
     'sidebar.stat_returned': 'Verohia ā kua whakahokia',
     'sidebar.goal_label': 'whāinga pānui',
     'sidebar.goal_edit': 'whakatika',
+    'sidebar.username_change': 'Panoni',
+    'sidebar.username_set': 'Tautuhia te ingoa kaiwhakamahi',
     // Username modal
     'username.title': 'Tīpakohia he ingoa kaiwhakamahi',
     'username.sub': 'Ka āhei tō ingoa kaiwhakamahi i ngā hoa ki te rapu i a koe ina tuku pātengi pukapuka — kāore e hiahiatia tō wāhitau īmēra.',
